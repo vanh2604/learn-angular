@@ -1,0 +1,29 @@
+<h1>User Details</h1>
+<input type="text" placeholder="email" [(ngModel)]="formData.email" />
+<br />
+<input type="text" placeholder="name" [(ngModel)]="formData.name" >
+<br />
+<textarea cols="10" rows="5" placeholder="address" [(ngModel)]="formData.address"></textarea>
+<br />
+<button (click)="addUser()">Save Data</button>
+
+<table *ngIf="listUser.length > 0;else noData">
+  <tr>
+    <th>#</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let user of listUser; let i = index">
+    <td>{{user.id}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.address}}</td>
+    <td><button (click)="deleteUser(i)">delete</button></td>
+  </tr>
+</table>
+
+<ng-template #noData>
+ <div>no data to show</div>
+</ng-template>
